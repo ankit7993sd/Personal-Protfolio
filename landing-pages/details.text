@@ -1,0 +1,60 @@
+PORTFOLIO PAGE CHANGE DETAILS
+
+Project
+-------
+File updated: landing-pages/inner-green-3d.html
+Page type: Personal portfolio hero / landing page for Ankit Dhayal.
+Visual direction: A nature-inspired, moss-and-stone 3D scene with floating navigation, project cards, and layered animated controls. The page remains the existing interactive experience; it was not rebuilt as a static mockup.
+
+Visible Text
+------------
+Brand: Ankit
+Navigation: HOME, ABOUT, PROJECTS, SKILLS, CONTACT
+Top-right action: Let's Talk ->
+Introduction: Hi, I'm Ankit Dhayal
+Main headline, with intentional line breaks:
+  I Turn
+  Ideas into
+  Digital
+  Experiences.
+Supporting paragraph: I design thoughtful digital experiences, blending visual storytelling, clean interfaces, and creative technology.
+Primary action: View My Work
+First card label: My Approach
+First card heading: Design with purpose.
+Second card label: Featured Project 01
+Second card heading: Ideas in Motion
+
+Typography and Text-Specific Styling
+------------------------------------
+- The page uses its existing Lexend and Manrope font setup. No new font, package, or dependency was added.
+- The introduction is uppercase-styled, tracked text, matching the reference's small introductory label appearance.
+- Card labels are uppercase with a smaller 12-design-unit size, medium weight, and increased letter spacing.
+- The first card heading's desktop text width was increased from 142 to 180 design units so "Design with purpose." wraps over two lines. Its position and the mobile width override were retained.
+- The headline remains four lines. "Experiences." uses a restrained pale sage color (#e2ecd7); the rest of the headline keeps its existing color.
+
+Motion
+------
+- The headline keeps its existing fade-and-rise reveal, staggered at 260ms, 360ms, and 460ms. The final two lines share the original final reveal; no extra stagger was introduced.
+- The introduction now uses the same 16-design-unit upward reveal, with 1.05s opacity and 1.25s transform transitions and a 160ms delay.
+- The introduction's reveal is disabled under prefers-reduced-motion, consistent with the page's existing reduced-motion handling.
+- Existing parallax, dock magnification, card and portal reveals, liquid-style controls, scene rendering, and other interaction code were left in place.
+
+Technology and Existing Assets
+------------------------------
+- Page structure and styling: HTML and embedded CSS in inner-green-3d.html.
+- 3D rendering: Three.js, loaded from the existing local asset landing-pages/inner-green-assets/three.min.js, with the page's existing canvas scene code.
+- Other visual effects: Existing canvas-based liquid controls, image reveal canvases, CSS transitions/animations, and pointer-driven parallax.
+- Fonts: Existing remote Lexend font-face and Manrope Google Fonts stylesheet.
+- Card images: Existing remote image sources for the moss-and-stone approach card and the misty grove project card. Their sources, crops, and positions were not changed.
+
+What Was Preserved
+------------------
+No image, image source, background, 3D object, canvas, visual effect, animation library, interaction handler, navigation behavior, or button behavior was replaced or removed. Element hierarchy, card geometry, layout positions, page background, and responsive rules were retained, except for the first card heading's text width adjustment described above.
+
+Validation Performed
+--------------------
+- Opened the local HTML page in the integrated browser and checked the updated visible copy and desktop text wrapping.
+- Confirmed the first card heading renders at 54px tall at the reference-sized stage, corresponding to two 27px text lines.
+- Checked a 390px-wide viewport; document width remained 390px with no horizontal overflow.
+- Checked editor diagnostics after edits; no errors were reported.
+- The browser preview showed a partial startup frame during one capture, so this was a visual and layout check, not a full automated end-to-end test of every animation or interaction.
