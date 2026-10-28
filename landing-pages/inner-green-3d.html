@@ -452,8 +452,8 @@
   }
   .card--stove{
     z-index:4; will-change:transform;
-    left:calc(1237 * var(--u)); top:calc(482 * var(--u));
-    width:calc(328 * var(--u)); height:calc(310 * var(--u));
+    left:calc(1210 * var(--u)); top:calc(500 * var(--u));
+    width:calc(350 * var(--u)); height:calc(360 * var(--u));
   }
   .card .label{
     position:absolute; left:calc(38 * var(--u));
@@ -536,6 +536,63 @@
   .card .knob svg, .knob--about svg{ width:calc(19 * var(--u)); height:calc(19 * var(--u)); display:block; color:#3f453a; }
   .card .knob:hover, .knob--about:hover{ transform:scale(1.1) rotate(8deg); background:#fff; }
   .card:hover{ box-shadow:0 calc(38 * var(--u)) calc(84 * var(--u)) rgba(16,21,13,.36); }
+
+  .contact-card .contact-copy{
+    position:absolute; z-index:4;
+    top:calc(32 * var(--u)); bottom:calc(30 * var(--u));
+    left:calc(30 * var(--u)); right:calc(148 * var(--u));
+    display:flex; flex-direction:column; align-items:flex-start;
+  }
+  .contact-card .label{
+    position:static; left:auto;
+    margin-bottom:calc(10 * var(--u));
+    font-size:clamp(9px,calc(11 * var(--u)),11px);
+    letter-spacing:calc(1.6 * var(--u));
+  }
+  .contact-card h2{
+    position:static; left:auto; width:auto;
+    font-size:clamp(22px,calc(27 * var(--u)),27px);
+    line-height:1.06; letter-spacing:calc(-.7 * var(--u));
+  }
+  .contact-subheading{
+    margin-top:calc(5 * var(--u));
+    color:var(--card-ink);
+    font-size:clamp(14px,calc(16 * var(--u)),16px);
+    font-weight:400; line-height:1.3; letter-spacing:calc(-.2 * var(--u));
+  }
+  .contact-description{
+    margin-top:calc(12 * var(--u));
+    color:#686d63;
+    font-size:clamp(11px,calc(12.5 * var(--u)),12.5px);
+    font-weight:300; line-height:1.55;
+  }
+  .contact-cta{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    min-height:42px; margin-top:auto; padding:0 17px;
+    border:1px solid rgba(64,75,52,.28); border-radius:999px;
+    color:#31382b; text-decoration:none;
+    background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(245,247,240,.74));
+    box-shadow:0 5px 16px rgba(39,48,31,.10),inset 0 1px rgba(255,255,255,.95);
+    font-size:12px; font-weight:500; letter-spacing:.1px;
+    transition:transform .35s var(--ease-out),box-shadow .35s var(--ease),border-color .35s var(--ease);
+  }
+  .contact-cta span{
+    display:inline-block;
+    transition:transform .35s var(--ease-out);
+  }
+  .contact-cta:hover{
+    transform:translateY(-2px);
+    border-color:rgba(64,75,52,.42);
+    box-shadow:0 8px 20px rgba(39,48,31,.16),0 0 18px rgba(190,201,169,.24),inset 0 1px rgba(255,255,255,.95);
+  }
+  .contact-cta:hover span{ transform:translateX(3px); }
+  .contact-cta:focus-visible{ outline-color:rgba(49,56,43,.8); }
+  .contact-card .contact-portrait{
+    top:calc(16 * var(--u)); right:calc(16 * var(--u)); bottom:calc(16 * var(--u)); left:auto;
+    width:calc(116 * var(--u)); height:auto;
+    border-radius:calc(28 * var(--u));
+    box-shadow:0 calc(8 * var(--u)) calc(20 * var(--u)) rgba(21,27,17,.16);
+  }
 
   /* ── scroll cue (z 4) ────────────────────────────────────────────────── */
   .scroll{
@@ -680,6 +737,7 @@
     .portal-media img{ transform:none !important; transition:none !important; }
     .scroll .track::after{ animation:none; }
     #scene{ transition:none; }
+    .contact-cta,.contact-cta span{ transition:none !important; }
   }
 
   /* ── narrow screens: one column, the moss becomes a band between the
@@ -749,17 +807,27 @@
     .card--about{ left:calc(34 * var(--u)); top:calc(1050 * var(--u)); width:calc(692 * var(--u)); height:calc(250 * var(--u)); }
     .card--about .label{ top:calc(96 * var(--u)); }
     .card--about h2{ top:calc(124 * var(--u)); width:calc(400 * var(--u)); font-size:calc(32 * var(--u)); line-height:calc(36 * var(--u)); }
-    .card--stove{ left:calc(34 * var(--u)); top:calc(1324 * var(--u)); width:calc(692 * var(--u)); height:calc(268 * var(--u)); }
-    .card--stove h2{ font-size:calc(32 * var(--u)); }
-    /* one column: both plates become a thumbnail on the card's outer edge,
-       the Ethos one still anchored to the top */
+    .card--stove{ left:calc(34 * var(--u)); top:calc(1324 * var(--u)); width:calc(692 * var(--u)); height:max(calc(268 * var(--u)),250px); }
+    /* Keep the Approach image above its copy and pin the contact portrait to
+       the outer edge of its wider card. */
     .card--stove figure{ left:auto; right:calc(16 * var(--u)); bottom:calc(16 * var(--u)); width:calc(300 * var(--u)); height:calc(150 * var(--u)); }
     .card--about figure{ left:auto; right:calc(16 * var(--u)); top:calc(16 * var(--u)); width:calc(224 * var(--u)); height:calc(218 * var(--u)); }
+    .contact-card{ --pd:12; --pr:1.4; }
+    .contact-card .contact-copy{ top:22px; bottom:20px; left:clamp(16px,calc(32 * var(--u)),32px); right:clamp(110px,calc(190 * var(--u) + 28px),218px); max-width:430px; }
+    .contact-card .label{ margin-bottom:8px; font-size:10px; letter-spacing:1.4px; }
+    .contact-card h2{ font-size:clamp(22px,calc(32 * var(--u)),32px); line-height:1.08; letter-spacing:-.7px; }
+    .contact-subheading{ margin-top:4px; font-size:clamp(14px,calc(17 * var(--u)),17px); line-height:1.25; }
+    .contact-description{ margin-top:9px; font-size:clamp(11px,calc(14 * var(--u)),14px); line-height:1.45; }
+    .contact-cta{ min-height:38px; padding:0 14px; font-size:12px; }
+    .contact-card .contact-portrait{ top:14px; right:14px; bottom:14px; width:clamp(82px,calc(190 * var(--u)),190px); height:auto; border-radius:22px; }
     .card .knob{ right:calc(24 * var(--u)); bottom:calc(24 * var(--u)); }
     .card--stove .knob{ right:calc(30 * var(--u)); bottom:calc(30 * var(--u)); }
 
     .scroll{ left:calc(702 * var(--u)); top:calc(470 * var(--u)); }
     .ghost{ font-size:calc(184 * var(--u)); letter-spacing:calc(14 * var(--u)); bottom:calc(660 * var(--u)); left:calc(-10 * var(--u)); }
+  }
+  @media (max-width:520px){
+    .stage{ height:max(calc(1625 * var(--u)),calc(1324 * var(--u) + 286px)); }
   }
 </style>
 </head>
@@ -794,7 +862,7 @@
         </span>
         <span>SKILLS</span>
       </a>
-      <a class="dock-item" data-dock data-spec data-burst href="#" style="--d:360ms">
+      <a class="dock-item" data-dock data-spec data-burst href="#contact" style="--d:360ms">
         <span class="glyph" aria-hidden="true">
           <svg viewBox="0 0 16 16"><path d="M2.5 3.5h11v9h-11z"/><path d="m3 4 5 4 5-4M8 8v4.5"/></svg>
         </span>
@@ -907,19 +975,18 @@
       </dl>
     </div>
 
-    <article class="card card--stove mask" style="--d:880ms; --pd:22; --pr:2.4">
-      <p class="label">Featured Project 01</p>
-      <h2>Ideas in Motion</h2>
-      <figure class="portal" data-delay="1080">
-        <span class="portal-media"><img crossorigin="anonymous" src="https://ublctyddhtbgaersvxxb.supabase.co/storage/v1/object/public/threeui-media/scene-images/c74a626e396794aa239bca6f/card-ecostove.jpg" alt="Moss-covered boulders in a misty grove" loading="eager" decoding="async"></span>
+    <article class="card card--stove contact-card mask" id="contact" style="--d:880ms; --pd:22; --pr:2.4">
+      <div class="contact-copy">
+        <p class="label">LET'S CONNECT</p>
+        <h2>Have an idea?</h2>
+        <p class="contact-subheading">Let's make it happen.</p>
+        <p class="contact-description">Have a project in mind or just want to say hello? I'd love to hear from you.</p>
+        <a class="contact-cta" href="mailto:dhayalankit73@gmail.com">Contact Me <span aria-hidden="true">→</span></a>
+      </div>
+      <figure class="portal contact-portrait" data-delay="1080">
+        <span class="portal-media"><img src="inner-green-assets/contact-portrait.png" alt="Ankit Dhayal in a navy suit" loading="eager" decoding="async"></span>
         <canvas class="pixel-reveal" aria-hidden="true"></canvas>
       </figure>
-      <button class="knob" aria-label="Open field note: After the Rain">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 21v-7"/><path d="M12 14c0-3.3 2.4-6 5.5-6 .3 3.6-2.2 6.4-5.5 6Z"/>
-          <path d="M12 16c-.1-2.9-2.2-5.2-4.9-5.2C6.8 13.7 9 16 12 16Z"/>
-        </svg>
-      </button>
     </article>
 
     <a class="scroll mask" style="--d:1040ms; --pd:9" href="#">Discover<span class="track"></span></a>
@@ -1456,11 +1523,17 @@ let W = 0, H = 0, DPR = 1, BW = 0, BH = 0, CX = 0, CY = 0;
 let DOWN = 4;
 const GLOW_TEX = 129;
 let needResize = true;
+let drawn = null;
+let frameId = 0;
+let frameCallback = null;
+let hostVisible = true;
+let pageVisible = !hostWindow.document.hidden;
+let lastDraw = 0;
 
 function resize(){
   const r  = stage.getBoundingClientRect();
   const br = btn.getBoundingClientRect();
-  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  DPR = Math.min(window.devicePixelRatio || 1, hostWindow.matchMedia('(max-width: 900px)').matches ? 1.25 : 1.5);
   const w = Math.max(2, Math.round(r.width  * DPR));
   const h = Math.max(2, Math.round(r.height * DPR));
   if(w !== W || h !== H){ W = w; H = h; cv.width = W; cv.height = H; }
@@ -1475,7 +1548,34 @@ function resize(){
   sizeTarget(T_a, dw, dh); sizeTarget(T_b, dw, dh);
   needResize = false;
 }
-new ResizeObserver(() => { needResize = true; }).observe(stage);
+function scheduleFrame(){
+  if(frameCallback && pageVisible && hostVisible && !frameId) frameId = requestAnimationFrame(frameCallback);
+}
+function updateFrameState(){
+  pageVisible = !hostWindow.document.hidden;
+  if(!pageVisible || !hostVisible){
+    if(frameId) cancelAnimationFrame(frameId);
+    frameId = 0;
+    return;
+  }
+  last = performance.now();
+  drawn = null;
+  scheduleFrame();
+}
+new ResizeObserver(() => { needResize = true; drawn = null; scheduleFrame(); }).observe(stage);
+hostWindow.document.addEventListener('visibilitychange', updateFrameState);
+hostWindow.addEventListener('resize', () => {
+  window.devicePixelRatio = hostWindow.devicePixelRatio;
+  needResize = true;
+  drawn = null;
+  scheduleFrame();
+}, {passive:true});
+if('IntersectionObserver' in hostWindow){
+  new hostWindow.IntersectionObserver(entries => {
+    hostVisible = entries[0].isIntersecting;
+    updateFrameState();
+  }).observe(host);
+}
 
 function drawTo(t){
   gl.bindFramebuffer(gl.FRAMEBUFFER, t ? t.fbo : null);
@@ -1509,7 +1609,6 @@ function localPt(e){
 }
 
 const calm = matchMedia('(prefers-reduced-motion: reduce)');
-let drawn = null;                  // signature of the last frame actually drawn
 
 /* HOST ADAPTATION — idle frame cap.
    The authored scene owns its page and can afford to run all twenty passes
@@ -1523,9 +1622,11 @@ let drawn = null;                  // signature of the last frame actually drawn
    goes back to running every frame, because that is when the metal has to
    track the cursor. */
 const IDLE_HZ = 30;
-let lastDraw = 0;
+const ACTIVE_HZ = 40;
 
 function frame(now){
+  frameId = 0;
+  if(!pageVisible || !hostVisible) return;
   const dtRaw = (now - last) / 1000; last = now;
   const dt = Math.min(dtRaw, 1/20);
   if(!calm.matches) clock += dt;
@@ -1563,12 +1664,12 @@ function frame(now){
   // reduced motion with nothing in flight.
   const sig = (calm.matches && !ripLive && ptrAmt < 0.002)
     ? `${hover}|${press}|${W}|${H}` : null;
-  if(sig !== null && sig === drawn){ requestAnimationFrame(frame); return; }
+  if(sig !== null && sig === drawn) return;
   drawn = sig;
 
   const idle = !on.over && !on.press && !on.focus && !ripLive
             && hover < 0.002 && press < 0.002 && ptrAmt < 0.002;
-  if(idle && now - lastDraw < 1000 / IDLE_HZ){ requestAnimationFrame(frame); return; }
+  if(now - lastDraw < 1000 / (idle ? IDLE_HZ : ACTIVE_HZ)){ scheduleFrame(); return; }
   lastDraw = now;
 
   for(let i = 0; i < uArr.length; i++) uArr[i] = P[PKEYS[i]];
@@ -1673,8 +1774,9 @@ function frame(now){
   gl.uniform1f(pComp.u.uPunch, C.punch);
   drawTo(null);
 
-  requestAnimationFrame(frame);
+  scheduleFrame();
 }
+frameCallback = frame;
 
 /* ---------------- interaction ----------------
    Hover, press and focus all light the metal; press additionally throws a
@@ -1685,6 +1787,7 @@ const sync = () => {
   pressTarget = on.press ? 1 : 0;
   document.body.classList.toggle('hot', hoverTarget > 0.5);
   document.body.classList.toggle('press', on.press);
+  scheduleFrame();
 };
 
 btn.addEventListener('pointerenter', e => {
@@ -1701,6 +1804,7 @@ btn.addEventListener('pointerleave', e => { if(e.pointerType === 'mouse'){ on.ov
 window.addEventListener('pointermove', e => {
   if(!on.over && !on.press) return;
   [ptr.x, ptr.y] = localPt(e);
+  scheduleFrame();
 }, {passive:true});
 
 btn.addEventListener('pointerdown', e => {
@@ -1728,17 +1832,18 @@ btn.addEventListener('keyup', e => {
 });
 
 resize();
-requestAnimationFrame(frame);
+scheduleFrame();
 
 // tiny console hooks for tuning
 window.__set = (o = {}, e = {}, c = {}, r = {}) => {
   Object.assign(P, o); Object.assign(E, e); Object.assign(C, c); Object.assign(R, r);
   drawn = null;
+  scheduleFrame();
 };
 window.__hover  = v => { on.over = !!v; sync(); };
 window.__press  = v => { on.press = !!v; sync(); if(v) addRipple(0, 0); };
-window.__ripple = (x = 0, y = 0) => addRipple(x, y);
-window.__seek   = v => { clock = v; drawn = null; };
+window.__ripple = (x = 0, y = 0) => { addRipple(x, y); scheduleFrame(); };
+window.__seek   = v => { clock = v; drawn = null; scheduleFrame(); };
 }
 
   }
@@ -1783,14 +1888,42 @@ window.__seek   = v => { clock = v; drawn = null; };
   var pointer = { x: 0, y: 0 }, smooth = { x: 0, y: 0 };
   var heroEl = document.getElementById('hero');
   var lastX = null, lastY = null;
-  var ticking = false, parOn = false;
+  var ticking = false, parOn = false, tickRequest = 0;
+  var pageActive = !document.hidden, heroInView = true, sceneInView = true;
+  var lastSceneRender = 0;
+  var sceneFrameInterval = 1000 / (window.innerWidth <= 900 || window.innerWidth * window.innerHeight < 620000 ? 30 : 36);
+  var sceneBoundsTop = 0, sceneBoundsBottom = 0, scrollRequest = 0;
 
   /* one rAF for the whole page: it eases the pointer, publishes it, and
      renders the GL scene if there is one */
   function startTick() {
-    if (ticking) return;
+    if (ticking || REDUCED || !pageActive || !heroInView || !sceneInView) return;
     ticking = true;
-    (function loop() { requestAnimationFrame(loop); tick(); })();
+    lastTick = 0;
+    tickRequest = requestAnimationFrame(tickLoop);
+  }
+
+  function tickLoop() {
+    tickRequest = 0;
+    if (!ticking || !pageActive || !heroInView || !sceneInView) { ticking = false; return; }
+    tick();
+    if (ticking && pageActive && heroInView && sceneInView) tickRequest = requestAnimationFrame(tickLoop);
+  }
+
+  function updateLoopActivity() {
+    pageActive = !document.hidden;
+    if (!pageActive || !heroInView || !sceneInView) {
+      if (tickRequest) cancelAnimationFrame(tickRequest);
+      tickRequest = 0;
+      ticking = false;
+      return;
+    }
+    lastSceneRender = 0;
+    if (REDUCED) {
+      if (renderer && clock) renderFrame();
+      return;
+    }
+    startTick();
   }
 
   var lastTick = 0;
@@ -1814,7 +1947,10 @@ window.__seek   = v => { clock = v; drawn = null; };
         heroEl.style.setProperty('--py', ny);
       }
     }
-    if (renderer && clock) renderFrame();
+    if (renderer && clock && sceneInView && performance.now() - lastSceneRender >= sceneFrameInterval) {
+      renderFrame();
+      lastSceneRender = performance.now();
+    }
   }
 
   function startParallax() {
@@ -1831,9 +1967,8 @@ window.__seek   = v => { clock = v; drawn = null; };
       /* the GL camera is framed on .hero, not on the window — on the narrow
          layout the hero is the taller of the two, so the pointer has to be
          put back into the canvas's own box or the moss parts in the wrong place */
-      var r = hero.getBoundingClientRect();
-      ndc.x =  ((e.clientX - r.left) / r.width) * 2 - 1;
-      ndc.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+      ndc.x = ((e.clientX + window.scrollX - heroDocLeft) / heroWidth) * 2 - 1;
+      ndc.y = -((e.clientY + window.scrollY - heroDocTop) / heroHeight) * 2 + 1;
     }, { passive: true });
 
     window.addEventListener('pointerleave', function () {
@@ -1845,6 +1980,31 @@ window.__seek   = v => { clock = v; drawn = null; };
   var hero     = document.getElementById('hero');
   var stageEl  = document.getElementById('stage');
   var NARROW   = window.matchMedia('(max-width: 900px)');
+  var SMALL    = NARROW.matches || (window.innerWidth * window.innerHeight) < 620000;
+  var heroDocLeft = 0, heroDocTop = 0, heroWidth = 1, heroHeight = 1;
+  var layoutRequest = 0, rendererPixelRatio = null;
+
+  document.addEventListener('visibilitychange', updateLoopActivity);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      heroInView = entries[0].isIntersecting;
+      updateLoopActivity();
+    }).observe(hero);
+  }
+  function updateSceneVisibility() {
+    var visible = sceneBoundsBottom > window.scrollY && sceneBoundsTop < window.scrollY + window.innerHeight;
+    if (visible === sceneInView) return;
+    sceneInView = visible;
+    updateLoopActivity();
+  }
+  function scheduleSceneVisibility() {
+    if (scrollRequest) return;
+    scrollRequest = requestAnimationFrame(function () {
+      scrollRequest = 0;
+      updateSceneVisibility();
+    });
+  }
+  window.addEventListener('scroll', scheduleSceneVisibility, { passive: true });
 
   /* ── where the two roots sit on the 1600 × 880 reference frame ───────
      Unchanged from the artwork build: the near root's box is the old
@@ -1897,10 +2057,12 @@ window.__seek   = v => { clock = v; drawn = null; };
 
     function launch() {
       setTimeout(function () {
+        var figBounds = fig.getBoundingClientRect();
+        if (figBounds.bottom <= 0 || figBounds.top >= window.innerHeight) return;
         var box = canvasEl.getBoundingClientRect();
         if (!box.width || !box.height) return;
 
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var dpr = Math.min(window.devicePixelRatio || 1, window.matchMedia('(max-width: 900px)').matches ? 1.25 : 1.5);
         canvasEl.width = Math.max(1, Math.round(box.width * dpr));
         canvasEl.height = Math.max(1, Math.round(box.height * dpr));
         var ctx = canvasEl.getContext('2d');
@@ -1929,8 +2091,11 @@ window.__seek   = v => { clock = v; drawn = null; };
 
         canvasEl.style.opacity = '1';
         var startedAt = performance.now();
+        var lastPaint = 0;
 
         function paint(now) {
+          if (now - lastPaint < 1000 / 30) { requestAnimationFrame(paint); return; }
+          lastPaint = now;
           var t = Math.min(1, (now - startedAt) / CUT_MS);
           var stepped = Math.floor(t * CUT_STEPS) / CUT_STEPS;
           var front = (stepped * span - over) / reach;
@@ -3432,16 +3597,17 @@ window.__seek   = v => { clock = v; drawn = null; };
    * ================================================================== */
   function build() {
     var narrow = NARROW.matches;
-    var small = narrow || (window.innerWidth * window.innerHeight) < 620000;
-    var BLADES_NEAR = small ? 70000 : 190000;
-    var BLADES_FAR  = small ? 20000 :  60000;
+    var small = SMALL;
+    var BLADES_NEAR = small ? 42000 : 120000;
+    var BLADES_FAR  = small ? 12000 :  36000;
 
     var q = /[?&]blades=(\d+)/.exec(location.search);
     if (q) { BLADES_NEAR = +q[1]; BLADES_FAR = Math.round(+q[1] * 0.21); }
 
     renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !small });
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.6 : 2));
+    rendererPixelRatio = Math.min(window.devicePixelRatio || 1, small ? 1.25 : 1.5);
+    renderer.setPixelRatio(rendererPixelRatio);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.30;
     if ('sRGBEncoding' in THREE) renderer.outputEncoding = THREE.sRGBEncoding;
@@ -3498,7 +3664,7 @@ window.__seek   = v => { clock = v; drawn = null; };
 
     buildAmbient();
     layout();
-    window.addEventListener('resize', layout);
+    window.addEventListener('resize', scheduleLayout, { passive: true });
     clock = new THREE.Clock();
 
     /* Hold the pulse for a page nobody is looking at: a background tab gets
@@ -3511,6 +3677,7 @@ window.__seek   = v => { clock = v; drawn = null; };
        it was looked at — and the first frame is also the one the entrance
        wipe is revealing. */
     renderFrame();
+    lastSceneRender = performance.now();
     startTick();
   }
 
@@ -4213,6 +4380,12 @@ window.__seek   = v => { clock = v; drawn = null; };
      place around a pinned landmark, exactly as the artwork was. */
   function layout() {
     W = hero.clientWidth; H = hero.clientHeight;
+    var smallViewport = NARROW.matches || window.innerWidth * window.innerHeight < 620000;
+    var pixelRatio = Math.min(window.devicePixelRatio || 1, smallViewport ? 1.25 : 1.5);
+    if (pixelRatio !== rendererPixelRatio) {
+      rendererPixelRatio = pixelRatio;
+      renderer.setPixelRatio(rendererPixelRatio);
+    }
     renderer.setSize(W, H, false);
     camera.fov = 2 * Math.atan((H / 2) / DIST) * 180 / Math.PI;
     camera.aspect = W / H;
@@ -4221,12 +4394,19 @@ window.__seek   = v => { clock = v; drawn = null; };
     var narrow = NARROW.matches;
     var s = stageEl.getBoundingClientRect();
     var h = hero.getBoundingClientRect();
+    heroDocLeft = h.left + window.scrollX;
+    heroDocTop = h.top + window.scrollY;
+    heroWidth = Math.max(hero.clientWidth, 1);
+    heroHeight = Math.max(hero.clientHeight, 1);
     var u = s.width / (narrow ? 760 : 1600);
     var ox = s.left - h.left, oy = s.top - h.top;
     function wx(px) { return ox + px * u - W / 2; }
     function wy(py) { return H / 2 - (oy + py * u); }
 
     var A = narrow ? ARCH_N : ARCH, F = narrow ? FAR_N : FAR;
+    var stageDocTop = s.top + window.scrollY;
+    sceneBoundsTop = stageDocTop + Math.min(A.top, F.top) * u - 80 * u;
+    sceneBoundsBottom = stageDocTop + Math.max(A.top + A.w / A.aspect, F.top + F.w / F.aspect) * u + 80 * u;
     /* wider than the stage: grow the roots to cover, pinned at a landmark */
     var cover = Math.max(1, W / s.width);
 
@@ -4271,6 +4451,23 @@ window.__seek   = v => { clock = v; drawn = null; };
       spray.material.uniforms.uScale.value = half;
       spray.material.uniforms.uSize.value = Math.max(7, 13 * u);
     }
+    updateSceneVisibility();
+  }
+
+  function scheduleLayout() {
+    if (layoutRequest) return;
+    layoutRequest = requestAnimationFrame(function () {
+      layoutRequest = 0;
+      if (!renderer) return;
+      layout();
+      sceneFrameInterval = 1000 / (NARROW.matches || window.innerWidth * window.innerHeight < 620000 ? 30 : 36);
+      lastSceneRender = 0;
+      if (REDUCED) {
+        if (pageActive && heroInView) renderFrame();
+      } else {
+        startTick();
+      }
+    });
   }
 
   /* ── cursor → the plane the root stands in, in each root's own space ── */
@@ -4339,7 +4536,7 @@ window.__seek   = v => { clock = v; drawn = null; };
     emitSpray(dt);
 
     renderer.render(scene, camera);
-    if (++frames === 2) window.__ready = true;
+    if (++frames >= (REDUCED ? 1 : 2)) window.__ready = true;
   }
 
   /* ── boot ──────────────────────────────────────────────────────────── */
